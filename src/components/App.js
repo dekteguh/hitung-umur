@@ -11,7 +11,8 @@ class App extends Component {
         
         this.state = {
             newDate: '',
-            birthday: '1989-03-10'
+            birthday: '1989-03-10',
+            showStats: false
         }
 
         this.handleChangeDate = this.handleChangeDate.bind(this)
@@ -26,26 +27,24 @@ class App extends Component {
 
     handleClickBirthday(e) {
         this.setState({
-            birthday: this.state.newDate
+            birthday: this.state.newDate,
+            showStats: true
         })
     }
 
     render() {
-        return (
-            <div className="App">
-                <h2>Masukkan Tanggal Lahir</h2>
-                <Form inline>
-                    <FormControl
-                        type="date"
-                        onChange={this.handleChangeDate} ></FormControl>
-                    {' '}
-                    <Button onClick={this.handleClickBirthday}>
-                        Hitung
-                    </Button>
+        return <div className="App">
+            <h2>Masukkan Tanggal Lahir</h2>
+            <Form inline>
+              <FormControl type="date" onChange={this.handleChangeDate} /> <Button onClick={this.handleClickBirthday}>Hitung</Button>
+                {this.state.showStats ?
+                  <div className="fade age-stats">
                     <AgeStats date={this.state.birthday} />
-                </Form>
-            </div>
-        )
+                    </div> :
+                    <div />
+                }
+            </Form>
+          </div>;
     }
 }
 
