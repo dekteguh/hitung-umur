@@ -16,14 +16,14 @@ class AgeStats extends Component {
         let months = Math.floor(days / 31);
         days -= months * 31;
 
-        return `${years} years, ${months} months, and ${days} days`;
+        return `${years} tahun, ${months} bulan, and ${days} hari`;
     }
 
     render() {
         return(
             <div>
                 <h1>{this.props.date}</h1>
-                <h4> Congrats on {this.timeSince(this.props.date)}</h4>
+                <h4> Umur anda {this.timeSince(this.props.date)}</h4>
                 <img src={confetti} alt="confetti" className="confetti"/>
             </div>
         )
